@@ -3,7 +3,7 @@ import os
 import pickle
 import shutil
 
-from hover_env import HoverEnv
+from envs.hover_env import HoverEnv
 from rsl_rl.runners import OnPolicyRunner
 
 import genesis as gs
