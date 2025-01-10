@@ -57,6 +57,6 @@ python hover_eval.py -e drone-hovering --ckpt 500 --record
 
 The evaluation script will visualize the drone’s performance and save a video if the `--record` flag is set.
 
-<img src="docs/evaluation.gif" alt="training" width="70%"/>
+<img src="docs/evaluation.gif" alt="evaluation" width="70%"/>
 
 By following this tutorial, you’ll be able to train and evaluate a basic drone hovering policy using Genesis. Have fun and enjoy!
