@@ -1,0 +1,3 @@
+[submodule "algo/rsl_rl"]
+	path = algo/rsl_rl
+	url = https://github.com/leggedrobotics/rsl_rl
