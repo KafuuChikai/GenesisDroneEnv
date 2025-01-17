@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 If you prefer, you can skip the training and proceed directly using the provided checkpoint `logs/drone-demo/model_500.pt`.
 
-```
+```bash
 python hover_eval.py -e drone-demo --ckpt 500 --record
 ```
 
@@ -24,7 +24,7 @@ python hover_eval.py -e drone-demo --ckpt 500 --record
 Use the provided training script to start training the policy.
 
 ```bash
-python hover_train.py -e drone-hovering -B 8192 --max_iterations 500
+python hover_train.py -e drone-hovering -B 8192 --max_iterations 300
 ```
 
 - `-e drone-hovering`: Specifies the experiment name as “drone-hovering”.
@@ -47,12 +47,12 @@ tensorboard --logdir logs
 ### Evaluate the train policy
 Use the provided evaluation script to evaluate the trained policy.
 
-```
-python hover_eval.py -e drone-hovering --ckpt 500 --record
+```bash
+python hover_eval.py -e drone-hovering --ckpt 300 --record
 ```
 
 - `-e drone-hovering`: Specifies the experiment name as “drone-hovering”.
-- `--ckpt 500`: Loads the trained policy from checkpoint 500.
+- `--ckpt 300`: Loads the trained policy from checkpoint 300.
 - `--record`: Optional. Records the evaluation and saves a video of the drone’s performance.
 
 The evaluation script will visualize the drone’s performance and save a video if the `--record` flag is set.
