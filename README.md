@@ -3,7 +3,19 @@ This repository contains example RL environment for Drones. This project has bee
 
 ## Requirements
 
-Ensure you have installed all necessary dependencies, including Genesis and rsl_rl.
+Ensure you have installed the latest version of [Genesis](https://github.com/Genesis-Embodied-AI/Genesis):
+
+```bash
+# Clone the Genesis repository
+cd /your/path/to/store/theRepo/
+git clone https://github.com/Genesis-Embodied-AI/Genesis.git
+
+# Install Genesis
+cd Genesis
+pip install -e .
+```
+
+Installed all necessary dependencies.
 
 ```bash
 # Install Requirements.
