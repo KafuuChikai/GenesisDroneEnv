@@ -72,3 +72,11 @@ The evaluation script will visualize the drone’s performance and save a video 
 <img src="docs/evaluation.gif" alt="evaluation" width="70%"/>
 
 By following this tutorial, you’ll be able to train and evaluate a basic drone hovering policy using Genesis. Have fun and enjoy!
+
+## Acknowledgement
+
+This repository is inspired by the following work:
+
+1. [Champion-level drone racing using deep reinforcement learning (Nature 2023)](https://www.nature.com/articles/s41586-023-06419-4.pdf)
+
+We acknowledge the contributions of these and future works that inspire and enhance the development of this repository.
