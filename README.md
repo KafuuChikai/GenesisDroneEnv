@@ -41,7 +41,7 @@ python hover_train.py -e drone-hovering -B 8192 --max_iterations 300
 
 - `-e drone-hovering`: Specifies the experiment name as “drone-hovering”.
 - `-B 8192`: Sets the number of environments to 8192 for parallel training.
-- `--max_iterations 500`: Specifies the maximum number of training iterations to 500. 
+- `--max_iterations 300`: Specifies the maximum number of training iterations to 300. 
 - `-v`: Optional. Enables visualization during training.
 
 If you enable the visualization, you will see:
