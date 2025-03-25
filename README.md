@@ -1,6 +1,13 @@
 # Genesis Drone Environment
 This repository contains example RL environment for Drones. This project has been included in the **official** [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) repository and [documentation](https://genesis-world.readthedocs.io/en/latest/user_guide/getting_started/hover_env.html). This repository will continue to provide examples and may be **updated with more complex features** in the future.
 
+## Note on Genesis Compatibility
+
+The latest version of Genesis (commit `b66cef811d740b363648700b12220563c2fe3d66` and later) introduces breaking changes. Please use the following tags based on your Genesis version:
+
+- For Genesis versions **after** commit `b66cef811d740b363648700b12220563c2fe3d66`, use **tag v1.0.1** of this repository.
+- For Genesis versions **before** commit `b66cef811d740b363648700b12220563c2fe3d66`, use **tag v1.0.0** of this repository.
+
 ## Requirements
 
 Ensure you have installed the latest version of [Genesis](https://github.com/Genesis-Embodied-AI/Genesis):
