@@ -16,7 +16,7 @@ def process_config(
 ) -> dict:
 
     # read the config file
-    raw_env_cfg = _get_config(envkey[args.exp_name], current_dir, "env")
+    raw_env_cfg = _get_config(envkey[args.exp_name], current_dir, "envs")
     train_cfg = _get_config(trainkey[args.exp_name], current_dir, "train")
 
     # update the config_dict with envconfig, algconfig, and runconfig
@@ -164,7 +164,7 @@ def get_train_cfg(exp_name, max_iterations, current_dir=None, config_name="train
     return train_cfg_dict
 
 
-def get_cfgs(current_dir=None, config_name="env_config", subfolder="env"):
+def get_cfgs(current_dir=None, config_name="env_config", subfolder="envs"):
     
     config = _get_config(config_name, current_dir, subfolder)
 
