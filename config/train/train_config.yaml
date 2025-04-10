@@ -1,0 +1,88 @@
+# All the settings for training the model are defined here
+
+
+algorithm: 
+  clip_param: 0.2 
+  desired_kl: 0.01 
+  entropy_coef: 0.004 
+  gamma: 0.99 
+  lam: 0.95 
+  learning_rate: 0.0003 
+  max_grad_norm: 1.0 
+  num_learning_epochs: 5 
+  num_mini_batches: 4 
+  schedule: adaptive 
+  use_clipped_value_loss: True 
+  value_loss_coef: 1.0 
+        
+init_member_classes: {}
+
+policy: 
+  activation: tanh 
+  actor_hidden_dims: [128, 128] 
+  critic_hidden_dims: [128, 128] 
+  init_noise_std: 1.0 
+
+runner: 
+  algorithm_class_name: PPO 
+  checkpoint: -1 
+  experiment_name: drone-hovering
+  load_run: -1 
+  log_interval: 1 
+  max_iterations: 300 
+  num_steps_per_env: 100 
+  policy_class_name: ActorCritic 
+  record_interval: -1 
+  resume: False 
+  resume_path: null
+  run_name:  
+  runner_class_name: runner_class_name 
+  save_interval: 100 
+
+runner_class_name: OnPolicyRunner 
+seed: 1 
+
+
+
+
+# train_cfg_dict = {
+#         "algorithm": {
+#             "clip_param": 0.2,
+#             "desired_kl": 0.01,
+#             "entropy_coef": 0.004,
+#             "gamma": 0.99,
+#             "lam": 0.95,
+#             "learning_rate": 0.0003,
+#             "max_grad_norm": 1.0,
+#             "num_learning_epochs": 5,
+#             "num_mini_batches": 4,
+#             "schedule": "adaptive",
+#             "use_clipped_value_loss": True,
+#             "value_loss_coef": 1.0,
+#         },
+#         "init_member_classes": {},
+#         "policy": {
+#             "activation": "tanh",
+#             "actor_hidden_dims": [128, 128],
+#             "critic_hidden_dims": [128, 128],
+#             "init_noise_std": 1.0,
+#         },
+#         "runner": {
+#             "algorithm_class_name": "PPO",
+#             "checkpoint": -1,
+#             "experiment_name": exp_name,
+#             "load_run": -1,
+#             "log_interval": 1,
+#             "max_iterations": max_iterations,
+#             "num_steps_per_env": 100,
+#             "policy_class_name": "ActorCritic",
+#             "record_interval": -1,
+#             "resume": False,
+#             "resume_path": None,
+#             "run_name": "",
+#             "runner_class_name": "runner_class_name",
+#             "save_interval": 100,
+#         },
+#         "runner_class_name": "OnPolicyRunner",
+#         "seed": 1,
+#     }
