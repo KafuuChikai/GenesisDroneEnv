@@ -64,8 +64,6 @@ def _save_config(args, config_dict: dict, current_dir: Union[str, os.PathLike]) 
     with open(config_save_path, "w") as f:
         yaml.dump(config_dict, f, default_flow_style=False)
 
-    # if config_dict["rl_hyperparams"]["verbose"] > 0:
-    #     print("Config saved to:", config_save_path)
 
 def _get_config(config_name: str, current_dir: Union[str, os.PathLike], subfolder: Union[str, os.PathLike]) -> dict:
     """Get the config dictionary from the YAML file.
@@ -117,42 +115,14 @@ def _read_all_config(
         Dictionary containing the configuration parameters.
 
     """
-    # if args.config is not None:
-    #     # Load the config file
-    #     with open(args.config, "r") as f:
-    #         try:
-    #             config_dict = yaml.safe_load(f)
-    #         except yaml.YAMLError as exc:
-    #             assert False, "{} error: {}".format(args.config, exc)
-    #     config_dict["logging"]["drone_model_path"] = os.path.join(current_dir, os.path.dirname(args.config))
-    # else:
-    #     # Get the defaults from train_default.yaml
-    #     with open(os.path.join(current_dir, "config", "train_default.yaml"), "r") as f:
-    #         try:
-    #             config_dict = yaml.safe_load(f)
-    #         except yaml.YAMLError as exc:
-    #             assert False, "train_default.yaml error: {}".format(exc)
-
-    #     # Update the config_dict with envconfig, algconfig, and runconfig
-    #     config_dict = recursive_dict_update(config_dict, envconfig)
-    #     config_dict = recursive_dict_update(config_dict, algconfig)
-    #     config_dict = recursive_dict_update(config_dict, runconfig)
-    #     config_dict["logging"]["drone_model_path"] = None
-
     # Update the train_cfg with command line arguments
     exp_name = getattr(args, "exp_name", None)
     if exp_name is not None:
         train_cfg["experiment_name"] = exp_name
 
-    # num_envs = getattr(args, "num_envs", None)
-    # if num_envs is not None:
-    #     config_dict["pyrl"]["n_envs"] = num_envs
-    #     config_dict["pyrl"]["runner"] = "parallel" if num_envs > 1 else "episode"
-
     max_steps = getattr(args, "max-iterations", None)
     if max_steps is not None:
         train_cfg["max-iterations"] = max_steps
-
     
     return env_cfg, train_cfg
 
@@ -168,7 +138,7 @@ def get_cfgs(current_dir=None, config_name="env_config", subfolder="envs"):
     
     config = _get_config(config_name, current_dir, subfolder)
 
-    # 分别提取各个配置
+    # read the config file
     env_cfg = config.get("env_cfg", {})
     obs_cfg = config.get("obs_cfg", {})
     reward_cfg = config.get("reward_cfg", {})
