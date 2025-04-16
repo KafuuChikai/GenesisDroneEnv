@@ -10,6 +10,8 @@ import genesis as gs
 
 
 def main():
+    current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
     parser = argparse.ArgumentParser()
     parser.add_argument("-e", "--exp_name", type=str, default="drone-hovering")
     parser.add_argument("--ckpt", type=int, default=300)
@@ -18,8 +20,10 @@ def main():
 
     gs.init()
 
-    log_dir = f"logs/{args.exp_name}"
-    env_cfg, obs_cfg, reward_cfg, command_cfg, train_cfg = pickle.load(open(f"logs/{args.exp_name}/cfgs.pkl", "rb"))
+    log_dir = os.path.join(current_dir,
+                           f"logs/{args.exp_name}")
+    load_config = os.path.join(log_dir, "cfgs.pkl")
+    env_cfg, obs_cfg, reward_cfg, command_cfg, train_cfg = pickle.load(open(load_config, "rb"))
     reward_cfg["reward_scales"] = {}
 
     # visualize the target
@@ -62,12 +66,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-"""
-# evaluation
-python examples/drone/hover_eval.py
-
-# Note
-If you experience slow performance or encounter other issues 
-during evaluation, try removing the --record option.
-"""

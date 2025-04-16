@@ -22,7 +22,7 @@ pip install -e .
 If you prefer, you can skip the training and proceed directly using the provided checkpoint `logs/drone-demo/model_500.pt`.
 
 ```bash
-python hover_eval.py -e drone-demo --ckpt 500 --record
+python scripts/hover_eval.py -e drone-demo --ckpt 500 --record
 ```
 
 ## Training
@@ -30,7 +30,7 @@ python hover_eval.py -e drone-demo --ckpt 500 --record
 Use the provided training script to start training the policy.
 
 ```bash
-python hover_train.py -e drone-hovering -B 8192 --max_iterations 300
+python scripts/hover_train.py -e drone-hovering -B 8192 --max_iterations 300
 ```
 
 - `-e drone-hovering`: Specifies the experiment name as “drone-hovering”.
@@ -54,7 +54,7 @@ tensorboard --logdir logs
 Use the provided evaluation script to evaluate the trained policy.
 
 ```bash
-python hover_eval.py -e drone-hovering --ckpt 300 --record
+python scripts/hover_eval.py -e drone-hovering --ckpt 300 --record
 ```
 
 - `-e drone-hovering`: Specifies the experiment name as “drone-hovering”.
