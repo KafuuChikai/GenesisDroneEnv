@@ -1,33 +1,20 @@
 # Genesis Drone Environment
 This repository contains example RL environment for Drones. This project has been included in the **official** [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) repository and [documentation](https://genesis-world.readthedocs.io/en/latest/user_guide/getting_started/hover_env.html). This repository will continue to provide examples and may be **updated with more complex features** in the future.
 
-## Note on Genesis Compatibility
+## Installations
 
-The latest version of Genesis (commit `b66cef811d740b363648700b12220563c2fe3d66` and later) introduces breaking changes. Please use the following tags based on your Genesis version:
-
-- For Genesis versions **after** commit `b66cef811d740b363648700b12220563c2fe3d66`, use **tag v1.0.1** of this repository.
-- For Genesis versions **before** commit `b66cef811d740b363648700b12220563c2fe3d66`, use **tag v1.0.0** of this repository.
-
-## Requirements
-
-Ensure you have installed the latest version of [Genesis](https://github.com/Genesis-Embodied-AI/Genesis):
+It's recommended to use a virtual environment, such as conda:
 
 ```bash
-# Clone the Genesis repository
-cd /your/path/to/store/theRepo/
-git clone https://github.com/Genesis-Embodied-AI/Genesis.git
-
-# Install Genesis
-cd Genesis
-pip install -e .
+conda create -n genesis_drone python=3.11 # Requires Python >= 3.10, <3.13
+conda activate genesis_drone
 ```
 
-Installed all necessary dependencies.
+Ensure you have installed the latest version of [Genesis](https://github.com/Genesis-Embodied-AI/Genesis). And then install the repo:
 
 ```bash
-# Install Requirements.
-git submodule update --init --recursive
-pip install -r requirements.txt
+git clone https://github.com/KafuuChikai/GenesisDroneEnv.git
+pip install -e .
 ```
 
 ## Demo
