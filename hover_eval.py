@@ -3,7 +3,7 @@ import os
 import pickle
 
 import torch
-from envs.hover_env import HoverEnv
+from genesis_drone_env.envs.hover_env import HoverEnv
 from rsl_rl.runners import OnPolicyRunner
 
 import genesis as gs

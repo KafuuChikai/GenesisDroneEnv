@@ -4,9 +4,9 @@ import pickle
 import shutil
 from datetime import datetime
 
-from envs.hover_env import HoverEnv
+from genesis_drone_env.envs.hover_env import HoverEnv
 from rsl_rl.runners import OnPolicyRunner
-from utils.config import process_config
+from genesis_drone_env.utils.config import process_config
 
 import genesis as gs
 
