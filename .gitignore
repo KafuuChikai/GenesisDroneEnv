@@ -1,5 +1,6 @@
 logs/
 !logs/drone-demo/
+!logs/drone-demo-ctbr/
 tmp/
 MUJOCO_LOG.TXT
 imgui.ini

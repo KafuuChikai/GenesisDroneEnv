@@ -1,0 +1,70 @@
+import argparse
+import os
+import pickle
+
+import torch
+from genesis_drone_env.envs.hover_env_ctbr import HoverEnvCtbr
+from rsl_rl.runners import OnPolicyRunner
+
+import genesis as gs
+
+
+def main():
+    current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-e", "--exp_name", type=str, required=True)
+    parser.add_argument("--ckpt", type=int, default=300)
+    parser.add_argument("--record", action="store_true", default=False)
+    args = parser.parse_args()
+
+    gs.init()
+
+    log_dir = os.path.join(current_dir,
+                           f"{args.exp_name}")
+    load_config = os.path.join(log_dir, "cfgs.pkl")
+    env_cfg, obs_cfg, reward_cfg, command_cfg, train_cfg = pickle.load(open(load_config, "rb"))
+    reward_cfg["reward_scales"] = {}
+
+    # visualize the target
+    env_cfg["visualize_target"] = True
+    # for video recording
+    env_cfg["visualize_camera"] = args.record
+    # set the max FPS for visualization
+    env_cfg["max_visualize_FPS"] = 60
+    # set episode length
+    env_cfg["episode_length_s"] = 30.0
+
+    env = HoverEnvCtbr(
+        num_envs=1,
+        env_cfg=env_cfg,
+        obs_cfg=obs_cfg,
+        reward_cfg=reward_cfg,
+        command_cfg=command_cfg,
+        show_viewer=True,
+    )
+
+    runner = OnPolicyRunner(env, train_cfg, log_dir, device="cuda:0")
+    resume_path = os.path.join(log_dir, f"model_{args.ckpt}.pt")
+    runner.load(resume_path)
+    policy = runner.get_inference_policy(device="cuda:0")
+
+    obs, _ = env.reset()
+
+    max_sim_step = int(env_cfg["episode_length_s"] * env_cfg["max_visualize_FPS"])
+    with torch.no_grad():
+        if args.record:
+            env.cam.start_recording()
+            for _ in range(max_sim_step):
+                actions = policy(obs)
+                obs, _, rews, dones, infos = env.step(actions)
+                env.cam.render()
+            env.cam.stop_recording(save_to_filename="video.mp4", fps=env_cfg["max_visualize_FPS"])
+        else:
+            for _ in range(max_sim_step):
+                actions = policy(obs)
+                obs, _, rews, dones, infos = env.step(actions)
+
+
+if __name__ == "__main__":
+    main()
